@@ -1,0 +1,145 @@
+openapi: 3.0.0
+info:
+  title: Firecrawl API
+  description: |
+    Firecrawl converts web pages into markdown, handles dynamic content, manages proxies, caching, rate limits, and more. Outputs include markdown, HTML, structured data, and screenshots.
+  version: 1.0.0
+servers:
+  - url: https://api.firecrawl.dev/v1
+paths:
+  /scrape:
+    post:
+      summary: Scrape a URL and get its content.
+      description: |
+        Scrape a given URL to retrieve content in markdown, HTML, or other formats. This endpoint supports structured data extraction and dynamic actions.
+      operationId: scrapeUrl
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: The URL to scrape.
+                formats:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - markdown
+                      - html
+                      - extract
+                  description: Output format(s) for the scraped data.
+                extract:
+                  type: object
+                  properties:
+                    schema:
+                      type: string
+                      description: The schema for structured data extraction.
+                    systemPrompt:
+                      type: string
+                      description: The system prompt used for extraction.
+                    prompt:
+                      type: string
+                      description: Extraction prompt without schema.
+                actions:
+                  type: array
+                  description: List of actions to interact with dynamic content before scraping.
+                  items:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        enum: 
+                          - wait
+                          - click
+                          - write
+                          - press
+                          - screenshot
+                      selector:
+                        type: string
+                        description: The CSS selector for `click` and `write` actions.
+                      milliseconds:
+                        type: integer
+                        description: Milliseconds to wait for `wait` action.
+                      text:
+                        type: string
+                        description: Text for `write` action.
+                      key:
+                        type: string
+                        description: Key for `press` action.
+      responses:
+        '200':
+          description: Scraping successful.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      markdown:
+                        type: string
+                        description: Scraped content in markdown format.
+                      html:
+                        type: string
+                        description: Scraped content in HTML format.
+                      extract:
+                        type: object
+                        description: Extracted structured data.
+                      actions:
+                        type: object
+                        properties:
+                          screenshots:
+                            type: array
+                            items:
+                              type: string
+                              description: Screenshot URLs.
+                      metadata:
+                        type: object
+                        properties:
+                          title:
+                            type: string
+                          description:
+                            type: string
+                          language:
+                            type: string
+                          keywords:
+                            type: string
+                          robots:
+                            type: string
+                          ogTitle:
+                            type: string
+                          ogDescription:
+                            type: string
+                          ogUrl:
+                            type: string
+                          ogImage:
+                            type: string
+                          sourceURL:
+                            type: string
+                          statusCode:
+                            type: integer
+        '400':
+          description: Invalid input or URL.
+        '500':
+          description: Server error.
+
+components:
+  schemas:
+    ExtractSchema:
+      type: object
+      properties:
+        company_mission:
+          type: string
+        supports_sso:
+          type: boolean
+        is_open_source:
+          type: boolean
+        is_in_yc:
+          type: boolean

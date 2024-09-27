@@ -1,0 +1,63 @@
+openapi: 3.0.0
+info:
+  title: Firecrawl API
+  description: This API is used for mapping a website and retrieving URLs. You can also search for specific URLs related to a topic using the search parameter.
+  version: 1.0.0
+servers:
+  - url: https://api.firecrawl.dev/v1
+    description: Production server
+paths:
+  /map:
+    post:
+      summary: Map a website and get URLs
+      description: Map a URL and retrieve most links present on the website. Optionally, use the `search` parameter to filter URLs by a specific keyword.
+      operationId: mapUrl
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: The URL of the website to map.
+                  example: "https://firecrawl.dev"
+                search:
+                  type: string
+                  description: Search term to filter specific URLs.
+                  example: "docs"
+      responses:
+        '200':
+          description: A successful response containing the list of URLs.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  links:
+                    type: array
+                    items:
+                      type: string
+                    example: [
+                      "https://firecrawl.dev",
+                      "https://www.firecrawl.dev/pricing",
+                      "https://www.firecrawl.dev/blog"
+                    ]
+        '400':
+          description: Bad request due to invalid input.
+        '401':
+          description: Unauthorized request. The API key is missing or invalid.
+        '500':
+          description: Server error.
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - BearerAuth: []

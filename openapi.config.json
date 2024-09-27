@@ -1,0 +1,14 @@
+{
+    "inputs": [
+      {
+        "inputFile": "./apis/crawl.yml"
+      },
+      {
+        "inputFile": "./apis/scrape.yml"
+      },
+      {
+        "inputFile": "./apis/map.yml"
+      }
+    ],
+    "output": "./openapi.yml"
+  }
