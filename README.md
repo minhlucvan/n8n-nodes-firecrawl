@@ -22,7 +22,7 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 
 ## Operations
 
-**Scrape** 
+### Scrape
 
 Firecrawl converts web pages into markdown, ideal for LLM applications.
 
@@ -30,7 +30,7 @@ Firecrawl converts web pages into markdown, ideal for LLM applications.
 - Handles dynamic content: dynamic websites, js-rendered sites, PDFs, images
 - Outputs clean markdown, structured data, screenshots or html.
 
-**Crawl**
+### Crawl
 
 Firecrawl can recursively search through a urls subdomains, and gather the content
 
@@ -46,7 +46,8 @@ Firecrawl can recursively search through a urls subdomains, and gather the conte
 
 This method guarantees an exhaustive crawl and data collection from any starting URL.
 
-**Map**
+### Map
+
 The easiest way to go from a single url to a map of the entire website. This is extremely useful for:
 
 - When you need to prompt the end-user to choose which links to scrape
