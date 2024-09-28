@@ -2,16 +2,17 @@ import { INodePropertyOptions } from 'n8n-workflow'
 import { properties as rawProperties } from './properties'
 import runHooks from './hooks'
 
-export const name = 'Check Crawl Job Status'
+export const name = 'Submit A Crawl Job'
 
 const rawOption: INodePropertyOptions = {
-  name: 'Check Crawl Job Status',
-  value: 'Check Crawl Job Status',
-  action: 'Check Crawl Job Status',
+  name: 'Submit A Crawl Job',
+  value: 'Submit A Crawl Job',
+  action: 'Submit a crawl job',
+  description: 'Submits a job to crawl a URL and all accessible subpages',
   routing: {
     request: {
-      method: 'GET',
-      url: '=/crawl/{{$parameter["crawl_id"]}}',
+      method: 'POST',
+      url: '=/crawl',
     },
   },
 }

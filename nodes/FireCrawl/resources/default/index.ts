@@ -2,20 +2,22 @@ import { INodeProperties, INodePropertyOptions } from 'n8n-workflow'
 import runHooks from './hooks'
 
 import * as submitACrawlJob from './submit-a-crawl-job'
-import * as crawlUrlWithWebSocketMonitoring from './crawl-url-with-web-socket-monitoring'
+import * as checkCrawlJobStatus from './check-crawl-job-status'
+import * as crawlUrlWithWebsocketMonitoring from './crawl-url-with-websocket-monitoring'
 import * as submitACrawlJobWithAWebhook from './submit-a-crawl-job-with-a-webhook'
-import * as scrapeUrl from './scrape-url'
-import * as mapUrl from './map-url'
+import * as scrapeAUrlAndGetItsContent from './scrape-a-url-and-get-its-content'
+import * as mapAWebsiteAndGetUrls from './map-a-website-and-get-urls'
 
 const operations: INodePropertyOptions[] = [
   submitACrawlJob.option,
-  crawlUrlWithWebSocketMonitoring.option,
+  checkCrawlJobStatus.option,
+  crawlUrlWithWebsocketMonitoring.option,
   submitACrawlJobWithAWebhook.option,
-  scrapeUrl.option,
-  mapUrl.option,
+  scrapeAUrlAndGetItsContent.option,
+  mapAWebsiteAndGetUrls.option,
 ]
 
-export const name = 'FireCrawl'
+export const name = 'Default'
 
 const operationSelect: INodeProperties = {
   displayName: 'Operation',
@@ -39,10 +41,11 @@ operationSelect.default = operations.length > 0 ? operations[0].value : ''
 export const rawProperties: INodeProperties[] = [
   operationSelect,
   ...submitACrawlJob.properties,
-  ...crawlUrlWithWebSocketMonitoring.properties,
+  ...checkCrawlJobStatus.properties,
+  ...crawlUrlWithWebsocketMonitoring.properties,
   ...submitACrawlJobWithAWebhook.properties,
-  ...scrapeUrl.properties,
-  ...mapUrl.properties,
+  ...scrapeAUrlAndGetItsContent.properties,
+  ...mapAWebsiteAndGetUrls.properties,
 ]
 
 const { properties, methods } = runHooks(rawProperties)

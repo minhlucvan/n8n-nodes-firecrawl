@@ -1,5 +1,6 @@
 import { INodeProperties } from 'n8n-workflow'
 
+/* eslint-disable */
 export const properties: INodeProperties[] = [
   {
     displayName: 'POST /map',
@@ -12,7 +13,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Default'],
-        operation: ['mapUrl'],
+        operation: ['Map A Website And Get Urls'],
       },
     },
   },
@@ -21,6 +22,7 @@ export const properties: INodeProperties[] = [
     name: 'url',
     type: 'string',
     default: 'https://firecrawl.dev',
+    description: 'The URL of the website to map.',
     routing: {
       request: {
         body: {
@@ -31,7 +33,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Default'],
-        operation: ['mapUrl'],
+        operation: ['Map A Website And Get Urls'],
       },
     },
   },
@@ -40,6 +42,7 @@ export const properties: INodeProperties[] = [
     name: 'search',
     type: 'string',
     default: 'docs',
+    description: 'Search term to filter specific URLs.',
     routing: {
       request: {
         body: {
@@ -50,8 +53,9 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Default'],
-        operation: ['mapUrl'],
+        operation: ['Map A Website And Get Urls'],
       },
     },
   },
 ]
+/* eslint-disable */

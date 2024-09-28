@@ -1,5 +1,6 @@
 import { INodeProperties } from 'n8n-workflow'
 
+/* eslint-disable */
 export const properties: INodeProperties[] = [
   {
     displayName: 'POST /crawl/websocket',
@@ -12,7 +13,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Default'],
-        operation: ['Crawl URL with WebSocket Monitoring'],
+        operation: ['Crawl Url With Websocket Monitoring'],
       },
     },
   },
@@ -21,6 +22,7 @@ export const properties: INodeProperties[] = [
     name: 'url',
     type: 'string',
     default: '',
+    description: 'The URL to crawl.',
     routing: {
       request: {
         body: {
@@ -31,26 +33,45 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Default'],
-        operation: ['Crawl URL with WebSocket Monitoring'],
+        operation: ['Crawl Url With Websocket Monitoring'],
       },
     },
   },
   {
     displayName: 'Exclude Paths',
     name: 'excludePaths',
-    type: 'json',
-    default: '[\n  null\n]',
+    type: 'fixedCollection',
+    default: [],
+    typeOptions: {
+      multipleValues: true,
+    },
+    description: 'List of paths to exclude from the crawl.',
+    placeholder: 'Add item',
+    options: [
+      {
+        name: 'items',
+        displayName: 'Items',
+        values: [
+          {
+            name: 'Item',
+            displayName: 'Item',
+            type: 'string',
+            default: '',
+          },
+        ],
+      },
+    ],
     routing: {
       request: {
         body: {
-          excludePaths: '={{ JSON.parse($value) }}',
+          excludePaths: '={{$value.items}}',
         },
       },
     },
     displayOptions: {
       show: {
         resource: ['Default'],
-        operation: ['Crawl URL with WebSocket Monitoring'],
+        operation: ['Crawl Url With Websocket Monitoring'],
       },
     },
   },
@@ -59,6 +80,7 @@ export const properties: INodeProperties[] = [
     name: 'limit',
     type: 'number',
     default: 0,
+    description: 'Limit the number of pages to crawl.',
     routing: {
       request: {
         body: {
@@ -69,8 +91,9 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Default'],
-        operation: ['Crawl URL with WebSocket Monitoring'],
+        operation: ['Crawl Url With Websocket Monitoring'],
       },
     },
   },
 ]
+/* eslint-disable */

@@ -1,8 +1,9 @@
 import { INodeProperties } from 'n8n-workflow'
 
+/* eslint-disable */
 export const properties: INodeProperties[] = [
   {
-    displayName: 'POST /scrape',
+    displayName: 'POST /crawl',
     name: 'operation',
     type: 'notice',
     typeOptions: {
@@ -12,15 +13,17 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Default'],
-        operation: ['scrapeUrl'],
+        operation: ['Submit A Crawl Job'],
       },
     },
   },
   {
+    required: true,
     displayName: 'Url',
     name: 'url',
     type: 'string',
     default: '',
+    description: 'The URL to crawl.',
     routing: {
       request: {
         body: {
@@ -31,66 +34,70 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Default'],
-        operation: ['scrapeUrl'],
+        operation: ['Submit A Crawl Job'],
       },
     },
   },
   {
-    displayName: 'Formats',
-    name: 'formats',
-    type: 'multiOptions',
-    default: '[\n  null\n]',
+    displayName: 'Limit',
+    name: 'limit',
+    type: 'number',
+    default: 0,
+    description: 'Limit the number of pages to crawl.',
     routing: {
       request: {
         body: {
-          formats: '={{ JSON.parse($value) }}',
+          limit: '={{ $value }}',
         },
       },
     },
     displayOptions: {
       show: {
         resource: ['Default'],
-        operation: ['scrapeUrl'],
+        operation: ['Submit A Crawl Job'],
       },
     },
-    options: [],
   },
   {
-    displayName: 'Extract',
-    name: 'extract',
-    type: 'json',
-    default: '{}',
+    displayName: 'Allow Backward Links',
+    name: 'allowBackwardLinks',
+    type: 'boolean',
+    default: true,
+    description:
+      'Allow crawling pages that are not direct descendants of the initial URL.',
     routing: {
       request: {
         body: {
-          extract: '={{ JSON.parse($value) }}',
+          allowBackwardLinks: '={{ $value }}',
         },
       },
     },
     displayOptions: {
       show: {
         resource: ['Default'],
-        operation: ['scrapeUrl'],
+        operation: ['Submit A Crawl Job'],
       },
     },
   },
   {
-    displayName: 'Actions',
-    name: 'actions',
-    type: 'json',
-    default: '[\n  {}\n]',
+    displayName: 'Webhook',
+    name: 'webhook',
+    type: 'string',
+    default: '',
+    description: 'URL to send webhook events during the crawl process.',
     routing: {
       request: {
         body: {
-          actions: '={{ JSON.parse($value) }}',
+          webhook: '={{ $value }}',
         },
       },
     },
     displayOptions: {
       show: {
         resource: ['Default'],
-        operation: ['scrapeUrl'],
+        operation: ['Submit A Crawl Job'],
       },
     },
   },
 ]
+/* eslint-disable */

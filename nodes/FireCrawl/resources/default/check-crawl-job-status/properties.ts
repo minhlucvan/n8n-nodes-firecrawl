@@ -1,5 +1,6 @@
 import { INodeProperties } from 'n8n-workflow'
 
+/* eslint-disable */
 export const properties: INodeProperties[] = [
   {
     displayName: 'GET /crawl/{crawl_id}',
@@ -20,6 +21,7 @@ export const properties: INodeProperties[] = [
     displayName: 'Crawl Id',
     name: 'crawl_id',
     required: true,
+    description: 'The ID of the crawl job.',
     default: '',
     type: 'string',
     displayOptions: {
@@ -30,3 +32,4 @@ export const properties: INodeProperties[] = [
     },
   },
 ]
+/* eslint-disable */

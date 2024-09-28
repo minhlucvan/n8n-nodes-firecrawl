@@ -2,7 +2,7 @@ import { INodeProperties } from 'n8n-workflow'
 import { aggregateNodeMethods } from '../helpers/methods'
 import runHooks from './hooks'
 
-import * as fireCrawl from './fire-crawl'
+import * as defaultResource from './default'
 
 const authenticationProperties: INodeProperties[] = []
 
@@ -14,7 +14,7 @@ const resourceSelect: INodeProperties[] = [
     noDataExpression: true,
     options: [
       {
-        name: 'FireCrawl',
+        name: 'Default',
         value: 'Default',
       },
     ],
@@ -22,14 +22,38 @@ const resourceSelect: INodeProperties[] = [
   },
 ]
 
+const extraProperties: INodeProperties[] = [
+  {
+    displayName: 'Extra Options',
+    name: 'extraOptions',
+    type: 'collection',
+    placeholder: 'Add option',
+    default: {},
+    options: [
+      {
+        displayName: 'Request Body',
+        name: 'body',
+        type: 'json',
+        default: '{}',
+        routing: {
+          request: {
+            body: '={{ JSON.stringify($value) }}',
+          },
+        },
+      },
+    ],
+  },
+]
+
 const rawProperties: INodeProperties[] = [
   ...authenticationProperties,
   ...resourceSelect,
-  ...fireCrawl.properties,
+  ...defaultResource.properties,
+  ...extraProperties,
 ]
 
 const { properties, methods: selfMethods } = runHooks(rawProperties)
 
-const methods = aggregateNodeMethods([selfMethods, fireCrawl.methods])
+const methods = aggregateNodeMethods([selfMethods, defaultResource.methods])
 
 export { properties, methods }

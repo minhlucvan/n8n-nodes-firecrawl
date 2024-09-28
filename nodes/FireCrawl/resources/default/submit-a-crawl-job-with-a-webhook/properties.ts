@@ -1,5 +1,6 @@
 import { INodeProperties } from 'n8n-workflow'
 
+/* eslint-disable */
 export const properties: INodeProperties[] = [
   {
     displayName: 'POST /crawl/webhook',
@@ -12,7 +13,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Default'],
-        operation: ['Submit a crawl job with a webhook'],
+        operation: ['Submit A Crawl Job With A Webhook'],
       },
     },
   },
@@ -22,6 +23,7 @@ export const properties: INodeProperties[] = [
     name: 'url',
     type: 'string',
     default: '',
+    description: 'The URL to crawl.',
     routing: {
       request: {
         body: {
@@ -32,7 +34,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Default'],
-        operation: ['Submit a crawl job with a webhook'],
+        operation: ['Submit A Crawl Job With A Webhook'],
       },
     },
   },
@@ -41,6 +43,7 @@ export const properties: INodeProperties[] = [
     name: 'limit',
     type: 'number',
     default: 0,
+    description: 'Limit the number of pages to crawl.',
     routing: {
       request: {
         body: {
@@ -51,7 +54,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Default'],
-        operation: ['Submit a crawl job with a webhook'],
+        operation: ['Submit A Crawl Job With A Webhook'],
       },
     },
   },
@@ -60,6 +63,7 @@ export const properties: INodeProperties[] = [
     name: 'webhook',
     type: 'string',
     default: '',
+    description: 'URL to send webhook events to.',
     routing: {
       request: {
         body: {
@@ -70,8 +74,9 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Default'],
-        operation: ['Submit a crawl job with a webhook'],
+        operation: ['Submit A Crawl Job With A Webhook'],
       },
     },
   },
 ]
+/* eslint-disable */
