@@ -59,6 +59,44 @@ export const properties: INodeProperties[] = [
     },
   },
   {
+    displayName: 'Exclude Paths',
+    name: 'excludePaths',
+    type: 'fixedCollection',
+    default: [],
+    typeOptions: {
+      multipleValues: true,
+    },
+    description: 'List of paths to exclude from the crawl.',
+    placeholder: 'Add item',
+    options: [
+      {
+        name: 'items',
+        displayName: 'Items',
+        values: [
+          {
+            name: 'Item',
+            displayName: 'Item',
+            type: 'string',
+            default: '',
+          },
+        ],
+      },
+    ],
+    routing: {
+      request: {
+        body: {
+          excludePaths: '={{$value.items}}',
+        },
+      },
+    },
+    displayOptions: {
+      show: {
+        resource: ['Default'],
+        operation: ['Submit A Crawl Job'],
+      },
+    },
+  },
+  {
     displayName: 'Allow Backward Links',
     name: 'allowBackwardLinks',
     type: 'boolean',
@@ -89,6 +127,90 @@ export const properties: INodeProperties[] = [
       request: {
         body: {
           webhook: '={{ $value }}',
+        },
+      },
+    },
+    displayOptions: {
+      show: {
+        resource: ['Default'],
+        operation: ['Submit A Crawl Job'],
+      },
+    },
+  },
+  {
+    displayName: 'Scrape Options',
+    name: 'scrapeOptions',
+    type: 'fixedCollection',
+    default: {},
+    description: 'Scraping options',
+    options: [
+      {
+        name: 'items',
+        displayName: 'Items',
+        values: [
+          {
+            type: 'multiOptions',
+            default: [],
+            description: 'Output format(s) for the scraped data.',
+            options: [
+              {
+                name: 'markdown',
+                value: 'markdown',
+              },
+              {
+                name: 'html',
+                value: 'html',
+              },
+              {
+                name: 'extract',
+                value: 'extract',
+              },
+            ],
+            name: 'formats',
+            displayName: 'formats',
+          },
+          {
+            type: 'fixedCollection',
+            default: {},
+            options: [
+              {
+                name: 'items',
+                displayName: 'Items',
+                values: [
+                  {
+                    type: 'string',
+                    default: '',
+                    description: 'The schema for structured data extraction.',
+                    name: 'schema',
+                    displayName: 'schema',
+                  },
+                  {
+                    type: 'string',
+                    default: '',
+                    description: 'The system prompt used for extraction.',
+                    name: 'systemPrompt',
+                    displayName: 'systemPrompt',
+                  },
+                  {
+                    type: 'string',
+                    default: '',
+                    description: 'Extraction prompt without schema.',
+                    name: 'prompt',
+                    displayName: 'prompt',
+                  },
+                ],
+              },
+            ],
+            name: 'extract',
+            displayName: 'extract',
+          },
+        ],
+      },
+    ],
+    routing: {
+      request: {
+        body: {
+          scrapeOptions: '={{$value.items}}',
         },
       },
     },

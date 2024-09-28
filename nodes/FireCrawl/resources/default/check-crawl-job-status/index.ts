@@ -4,11 +4,13 @@ import runHooks from './hooks'
 
 export const name = 'Check Crawl Job Status'
 
+/* eslint-disable */
 const rawOption: INodePropertyOptions = {
   name: 'Check Crawl Job Status',
   value: 'Check Crawl Job Status',
   action: 'Check Crawl Job Status',
-  description: 'Check the status of a crawl job by its ID and retrieve the result',
+  description:
+    'Check the status of a crawl job by its ID and retrieve the result.',
   routing: {
     request: {
       method: 'GET',
@@ -16,6 +18,7 @@ const rawOption: INodePropertyOptions = {
     },
   },
 }
+/* eslint-disable */
 
 const { properties, option } = runHooks(rawOption, rawProperties)
 

@@ -4,11 +4,13 @@ import runHooks from './hooks'
 
 export const name = 'Crawl Url With Websocket Monitoring'
 
+/* eslint-disable */
 const rawOption: INodePropertyOptions = {
   name: 'Crawl Url With Websocket Monitoring',
   value: 'Crawl Url With Websocket Monitoring',
   action: 'Crawl URL with WebSocket Monitoring',
-  description: 'Initiate a crawl and monitor progress in real-time using WebSocket',
+  description:
+    'Initiate a crawl and monitor progress in real-time using WebSocket.',
   routing: {
     request: {
       method: 'POST',
@@ -16,6 +18,7 @@ const rawOption: INodePropertyOptions = {
     },
   },
 }
+/* eslint-disable */
 
 const { properties, option } = runHooks(rawOption, rawProperties)
 

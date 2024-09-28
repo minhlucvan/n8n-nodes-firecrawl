@@ -4,11 +4,12 @@ import runHooks from './hooks'
 
 export const name = 'Submit A Crawl Job'
 
+/* eslint-disable */
 const rawOption: INodePropertyOptions = {
   name: 'Submit A Crawl Job',
   value: 'Submit A Crawl Job',
   action: 'Submit a crawl job',
-  description: 'Submits a job to crawl a URL and all accessible subpages',
+  description: 'Submits a job to crawl a URL and all accessible subpages.',
   routing: {
     request: {
       method: 'POST',
@@ -16,6 +17,7 @@ const rawOption: INodePropertyOptions = {
     },
   },
 }
+/* eslint-disable */
 
 const { properties, option } = runHooks(rawOption, rawProperties)
 

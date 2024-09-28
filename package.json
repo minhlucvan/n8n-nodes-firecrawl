@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-firecrawl",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "FireCrawl nodes for n8n",
   "keywords": [
     "n8n-community-node-package",
@@ -31,7 +31,7 @@
     "lint": "eslint nodes credentials package.json",
     "lintfix": "eslint nodes credentials package.json --fix",
     "prepublishOnly": "pnpm build && pnpm lint -c .eslintrc.prepublish.js nodes credentials package.json",
-    "merge:api": "npx openapi-merge-cli -config ./openapi.config.json",
+    "merge:api": "npx openapi-merge-cli --config ./openapi.config.json",
     "p2o": "p2o ./collection.json -f ./openapi.yml",
     "codegen": "node ../../cli.js -o . -c nodes.config.js ./openapi.yml ../templates/n8n-nodes"
   },

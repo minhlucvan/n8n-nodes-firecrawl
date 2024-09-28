@@ -4,6 +4,7 @@ import runHooks from './hooks'
 
 export const name = 'Map A Website And Get Urls'
 
+/* eslint-disable */
 const rawOption: INodePropertyOptions = {
   name: 'Map A Website And Get Urls',
   value: 'Map A Website And Get Urls',
@@ -17,6 +18,7 @@ const rawOption: INodePropertyOptions = {
     },
   },
 }
+/* eslint-disable */
 
 const { properties, option } = runHooks(rawOption, rawProperties)
 
