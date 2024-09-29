@@ -135,6 +135,11 @@
       }
     },
     "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
       "show": {
         "resource": [
           "Default"
@@ -159,6 +164,11 @@
       }
     },
     "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
       "show": {
         "resource": [
           "Default"
@@ -201,6 +211,11 @@
       }
     },
     "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
       "show": {
         "resource": [
           "Default"
@@ -225,6 +240,11 @@
       }
     },
     "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
       "show": {
         "resource": [
           "Default"
@@ -249,6 +269,11 @@
       }
     },
     "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
       "show": {
         "resource": [
           "Default"
@@ -337,7 +362,39 @@
       }
     },
     "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
       "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Submit A Crawl Job"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"url\": \"string\",\n  \"limit\": 0,\n  \"excludePaths\": [\n    \"string\"\n  ],\n  \"allowBackwardLinks\": true,\n  \"webhook\": \"string\",\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"extract\": {\n      \"schema\": \"string\",\n      \"systemPrompt\": \"string\",\n      \"prompt\": \"string\"\n    }\n  }\n}",
+    "description": "Custom body to send.",
+    "routing": {
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "/options.useCustomBody": [
+          true
+        ],
         "resource": [
           "Default"
         ],
@@ -417,6 +474,11 @@
       }
     },
     "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
       "show": {
         "resource": [
           "Default"
@@ -459,6 +521,11 @@
       }
     },
     "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
       "show": {
         "resource": [
           "Default"
@@ -483,6 +550,11 @@
       }
     },
     "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
       "show": {
         "resource": [
           "Default"
@@ -571,7 +643,39 @@
       }
     },
     "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
       "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Crawl Url With Websocket Monitoring"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"url\": \"string\",\n  \"excludePaths\": [\n    \"string\"\n  ],\n  \"limit\": 0,\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"extract\": {\n      \"schema\": \"string\",\n      \"systemPrompt\": \"string\",\n      \"prompt\": \"string\"\n    }\n  }\n}",
+    "description": "Custom body to send.",
+    "routing": {
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "/options.useCustomBody": [
+          true
+        ],
         "resource": [
           "Default"
         ],
@@ -615,6 +719,11 @@
       }
     },
     "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
       "show": {
         "resource": [
           "Default"
@@ -639,6 +748,11 @@
       }
     },
     "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
       "show": {
         "resource": [
           "Default"
@@ -663,6 +777,11 @@
       }
     },
     "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
       "show": {
         "resource": [
           "Default"
@@ -705,6 +824,11 @@
       }
     },
     "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
       "show": {
         "resource": [
           "Default"
@@ -793,7 +917,39 @@
       }
     },
     "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
       "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Submit A Crawl Job With A Webhook"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"url\": \"string\",\n  \"limit\": 0,\n  \"webhook\": \"string\",\n  \"excludePaths\": [\n    \"string\"\n  ],\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"extract\": {\n      \"schema\": \"string\",\n      \"systemPrompt\": \"string\",\n      \"prompt\": \"string\"\n    }\n  }\n}",
+    "description": "Custom body to send.",
+    "routing": {
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "/options.useCustomBody": [
+          true
+        ],
         "resource": [
           "Default"
         ],
@@ -836,6 +992,11 @@
       }
     },
     "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
       "show": {
         "resource": [
           "Default"
@@ -874,6 +1035,11 @@
       }
     },
     "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
       "show": {
         "resource": [
           "Default"
@@ -926,6 +1092,11 @@
       }
     },
     "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
       "show": {
         "resource": [
           "Default"
@@ -1021,7 +1192,39 @@
       }
     },
     "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
       "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Scrape A Url And Get Its Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"url\": \"string\",\n  \"formats\": [\n    \"markdown\"\n  ],\n  \"extract\": {\n    \"schema\": \"string\",\n    \"systemPrompt\": \"string\",\n    \"prompt\": \"string\"\n  },\n  \"actions\": [\n    {\n      \"type\": \"wait\",\n      \"selector\": \"string\",\n      \"milliseconds\": 0,\n      \"text\": \"string\",\n      \"key\": \"string\"\n    }\n  ]\n}",
+    "description": "Custom body to send.",
+    "routing": {
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "/options.useCustomBody": [
+          true
+        ],
         "resource": [
           "Default"
         ],
@@ -1064,6 +1267,11 @@
       }
     },
     "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
       "show": {
         "resource": [
           "Default"
@@ -1088,7 +1296,39 @@
       }
     },
     "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
       "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Map A Website And Get Urls"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"url\": \"https://firecrawl.dev\",\n  \"search\": \"docs\"\n}",
+    "description": "Custom body to send.",
+    "routing": {
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "/options.useCustomBody": [
+          true
+        ],
         "resource": [
           "Default"
         ],
