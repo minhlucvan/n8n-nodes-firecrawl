@@ -17,7 +17,7 @@ import * as defaultResource from './default';
 const authenticationProperties: INodeProperties[] = [];
 
 const resourceSelect: INodeProperties[] = [
-	{git ad
+	{
 		displayName: 'Resource',
 		name: 'resource',
 		type: 'hidden',
