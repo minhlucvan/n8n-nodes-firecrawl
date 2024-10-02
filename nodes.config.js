@@ -28,5 +28,9 @@ module.exports = {
   overwrites: {
     operations: [],
   },
+  normalizeActionFn: (_, opName) => {
+    // /a /b => /b
+    return opName;
+  }
 };
 

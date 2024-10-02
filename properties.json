@@ -1,0 +1,1001 @@
+[
+  {
+    "displayName": "Resource",
+    "name": "resource",
+    "type": "hidden",
+    "noDataExpression": true,
+    "options": [
+      {
+        "name": "Default",
+        "value": "Default",
+        "description": ""
+      }
+    ],
+    "default": ""
+  },
+  {
+    "displayName": "Operation",
+    "name": "operation",
+    "type": "options",
+    "noDataExpression": true,
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ]
+      }
+    },
+    "options": [
+      {
+        "name": "Submit A Crawl Job",
+        "value": "Submit A Crawl Job",
+        "action": "Submit A Crawl Job Default",
+        "description": "Submits a job to crawl a URL and all accessible subpages",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/crawl"
+          }
+        }
+      },
+      {
+        "name": "Check Crawl Job Status",
+        "value": "Check Crawl Job Status",
+        "action": "Check Crawl Job Status Default",
+        "description": "Check the status of a crawl job by its ID and retrieve the result",
+        "routing": {
+          "request": {
+            "method": "GET",
+            "url": "=/crawl/{{$parameter[\"crawl_id\"]}}"
+          }
+        }
+      },
+      {
+        "name": "Crawl Url With Websocket Monitoring",
+        "value": "Crawl Url With Websocket Monitoring",
+        "action": "Crawl Url With Websocket Monitoring Default",
+        "description": "Initiate a crawl and monitor progress in real-time using WebSocket",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/crawl/websocket"
+          },
+          "output": {
+            "postReceive": [
+              {
+                "type": "setKeyValue",
+                "properties": {
+                  "data": "={{$response.body}}"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "Submit A Crawl Job With A Webhook",
+        "value": "Submit A Crawl Job With A Webhook",
+        "action": "Submit A Crawl Job With A Webhook Default",
+        "description": "Submits a job to crawl a URL and sends webhook events during the crawl process",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/crawl/webhook"
+          }
+        }
+      },
+      {
+        "name": "Scrape A Url And Get Its Content",
+        "value": "Scrape A Url And Get Its Content",
+        "action": "Scrape A Url And Get Its Content Default",
+        "description": "Scrape a given URL to retrieve content in markdown, HTML, or other formats. This endpoint supports structured data extraction and dynamic actions.",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/scrape"
+          }
+        }
+      },
+      {
+        "name": "Map A Website And Get Urls",
+        "value": "Map A Website And Get Urls",
+        "action": "Map A Website And Get Urls Default",
+        "description": "Map a URL and retrieve most links present on the website. Optionally, use the `search` parameter to filter URLs by a specific keyword",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/map"
+          }
+        }
+      }
+    ],
+    "default": ""
+  },
+  {
+    "displayName": "POST /crawl",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Submit A Crawl Job"
+        ]
+      }
+    }
+  },
+  {
+    "required": true,
+    "displayName": "Url",
+    "name": "url",
+    "type": "string",
+    "default": "",
+    "description": "The URL to crawl",
+    "routing": {
+      "request": {
+        "body": {
+          "url": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Submit A Crawl Job"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Limit",
+    "name": "limit",
+    "type": "number",
+    "default": 0,
+    "description": "Limit the number of pages to crawl",
+    "routing": {
+      "request": {
+        "body": {
+          "limit": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Submit A Crawl Job"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Allow Backward Links",
+    "name": "allowBackwardLinks",
+    "type": "boolean",
+    "default": true,
+    "description": "Allow crawling pages that are not direct descendants of the initial URL",
+    "routing": {
+      "request": {
+        "body": {
+          "allowBackwardLinks": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Submit A Crawl Job"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Webhook",
+    "name": "webhook",
+    "type": "string",
+    "default": "",
+    "description": "URL to send webhook events during the crawl process",
+    "routing": {
+      "request": {
+        "body": {
+          "webhook": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Submit A Crawl Job"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"url\": \"string\",\n  \"limit\": 0,\n  \"allowBackwardLinks\": true,\n  \"webhook\": \"string\"\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Submit A Crawl Job"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /crawl/{crawl_id}",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Check Crawl Job Status"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Crawl Id",
+    "name": "crawl_id",
+    "required": true,
+    "description": "The ID of the crawl job.",
+    "default": "",
+    "type": "string",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Check Crawl Job Status"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /crawl/websocket",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Crawl Url With Websocket Monitoring"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Url",
+    "name": "url",
+    "type": "string",
+    "default": "",
+    "description": "The URL to crawl",
+    "routing": {
+      "request": {
+        "body": {
+          "url": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Crawl Url With Websocket Monitoring"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Exclude Paths",
+    "name": "excludePaths",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "List of paths to exclude from the crawl",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "name": "Item",
+            "displayName": "Item",
+            "type": "string",
+            "default": ""
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "excludePaths": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Crawl Url With Websocket Monitoring"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Limit",
+    "name": "limit",
+    "type": "number",
+    "default": 0,
+    "description": "Limit the number of pages to crawl",
+    "routing": {
+      "request": {
+        "body": {
+          "limit": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Crawl Url With Websocket Monitoring"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"url\": \"string\",\n  \"excludePaths\": [\n    \"string\"\n  ],\n  \"limit\": 0\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Crawl Url With Websocket Monitoring"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /crawl/webhook",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Submit A Crawl Job With A Webhook"
+        ]
+      }
+    }
+  },
+  {
+    "required": true,
+    "displayName": "Url",
+    "name": "url",
+    "type": "string",
+    "default": "",
+    "description": "The URL to crawl",
+    "routing": {
+      "request": {
+        "body": {
+          "url": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Submit A Crawl Job With A Webhook"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Limit",
+    "name": "limit",
+    "type": "number",
+    "default": 0,
+    "description": "Limit the number of pages to crawl",
+    "routing": {
+      "request": {
+        "body": {
+          "limit": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Submit A Crawl Job With A Webhook"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Webhook",
+    "name": "webhook",
+    "type": "string",
+    "default": "",
+    "description": "URL to send webhook events to",
+    "routing": {
+      "request": {
+        "body": {
+          "webhook": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Submit A Crawl Job With A Webhook"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"url\": \"string\",\n  \"limit\": 0,\n  \"webhook\": \"string\"\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Submit A Crawl Job With A Webhook"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /scrape",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Scrape A Url And Get Its Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Url",
+    "name": "url",
+    "type": "string",
+    "default": "",
+    "description": "The URL to scrape",
+    "routing": {
+      "request": {
+        "body": {
+          "url": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Scrape A Url And Get Its Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Formats",
+    "name": "formats",
+    "type": "multiOptions",
+    "default": [],
+    "description": "Output format(s) for the scraped data.",
+    "options": [
+      {
+        "name": "markdown",
+        "value": "markdown"
+      },
+      {
+        "name": "html",
+        "value": "html"
+      },
+      {
+        "name": "extract",
+        "value": "extract"
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "formats": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Scrape A Url And Get Its Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Extract",
+    "name": "extract",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "The schema for structured data extraction",
+            "name": "schema",
+            "displayName": "Schema"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "The system prompt used for extraction",
+            "name": "systemPrompt",
+            "displayName": "Systemprompt"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "Extraction prompt without schema",
+            "name": "prompt",
+            "displayName": "Prompt"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "extract": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Scrape A Url And Get Its Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Actions",
+    "name": "actions",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "List of actions to interact with dynamic content before scraping",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "options",
+            "default": "wait",
+            "description": "",
+            "options": [
+              {
+                "name": "wait",
+                "value": "wait"
+              },
+              {
+                "name": "click",
+                "value": "click"
+              },
+              {
+                "name": "write",
+                "value": "write"
+              },
+              {
+                "name": "press",
+                "value": "press"
+              },
+              {
+                "name": "screenshot",
+                "value": "screenshot"
+              }
+            ],
+            "name": "type",
+            "displayName": "Type"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "The CSS selector for `click` and `write` actions",
+            "name": "selector",
+            "displayName": "Selector"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "Milliseconds to wait for `wait` action",
+            "name": "milliseconds",
+            "displayName": "Milliseconds"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "Text for `write` action",
+            "name": "text",
+            "displayName": "Text"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "Key for `press` action",
+            "name": "key",
+            "displayName": "Key"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "actions": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Scrape A Url And Get Its Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"url\": \"string\",\n  \"formats\": [\n    \"markdown\"\n  ],\n  \"extract\": {\n    \"schema\": \"string\",\n    \"systemPrompt\": \"string\",\n    \"prompt\": \"string\"\n  },\n  \"actions\": [\n    {\n      \"type\": \"wait\",\n      \"selector\": \"string\",\n      \"milliseconds\": 0,\n      \"text\": \"string\",\n      \"key\": \"string\"\n    }\n  ]\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Scrape A Url And Get Its Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /map",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Map A Website And Get Urls"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Url",
+    "name": "url",
+    "type": "string",
+    "default": "https://firecrawl.dev",
+    "description": "The URL of the website to map",
+    "routing": {
+      "request": {
+        "body": {
+          "url": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Map A Website And Get Urls"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Search",
+    "name": "search",
+    "type": "string",
+    "default": "docs",
+    "description": "Search term to filter specific URLs",
+    "routing": {
+      "request": {
+        "body": {
+          "search": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Map A Website And Get Urls"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"url\": \"https://firecrawl.dev\",\n  \"search\": \"docs\"\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Map A Website And Get Urls"
+        ]
+      }
+    }
+  }
+]

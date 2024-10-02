@@ -1,6 +1,6 @@
 import { INodeProperties, INodeType } from 'n8n-workflow'
 
-export default function runHook (properties: INodeProperties[]): {
+export function runHooks (properties: INodeProperties[]): {
   properties: INodeProperties[]
   methods: INodeType['methods']
 } {

@@ -5,7 +5,7 @@ import { methods } from './FireCrawl.methods'
 export class FireCrawl implements INodeType {
   description: INodeTypeDescription = {
     displayName: 'FireCrawl',
-    name: 'FireCrawl',
+    name: 'fireCrawl',
     icon: 'file:firewrawl.png',
     group: ['transform'],
     version: 1,
@@ -23,6 +23,7 @@ export class FireCrawl implements INodeType {
         required: true,
       },
     ],
+
     requestDefaults: {
       headers: {
         Accept: 'application/json',
@@ -30,7 +31,8 @@ export class FireCrawl implements INodeType {
       },
       baseURL: '={{$credentials.baseUrl}}',
     },
-    properties: properties,
+
+    properties,
   }
 
   methods = methods
