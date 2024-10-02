@@ -17,7 +17,7 @@ export const name = 'Map A Website And Get Urls'
 const rawOption: INodePropertyOptions = {
   name: 'Map A Website And Get Urls',
   value: 'Map A Website And Get Urls',
-  action: 'Map A Website And Get Urls Default',
+  action: 'Map A Website And Get Urls',
   description:
     'Map a URL and retrieve most links present on the website. Optionally, use the `search` parameter to filter URLs by a specific keyword',
   routing: {

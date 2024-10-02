@@ -17,7 +17,7 @@ export const name = 'Crawl Url With Websocket Monitoring'
 const rawOption: INodePropertyOptions = {
   name: 'Crawl Url With Websocket Monitoring',
   value: 'Crawl Url With Websocket Monitoring',
-  action: 'Crawl Url With Websocket Monitoring Default',
+  action: 'Crawl Url With Websocket Monitoring',
   description:
     'Initiate a crawl and monitor progress in real-time using WebSocket',
   routing: {

@@ -1,46 +1,83 @@
-![Banner image](https://user-images.githubusercontent.com/10284570/173569848-c624317f-42b1-45a6-ab09-f0ea3c247648.png)
+# n8n-nodes-firecrawl
+![](./firecrawl.png)
 
-# n8n-nodes-starter
+This is an n8n community node. it lets you use Firecrawl in your n8n workflows.
 
-This repo contains example nodes to help you get started building your own custom integrations for [n8n](n8n.io). It includes the node linter and other dependencies.
+Firecrawl is a web scraping tool that allows you to extract data from websites and APIs.
 
-To make your custom node available to the community, you must create it as an npm package, and [submit it to the npm registry](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry).
+https://www.firecrawl.dev/
 
-## Prerequisites
+[n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
-You need the following installed on your development machine:
+[Installation](#installation)  
+[Operations](#operations)  
+[Credentials](#credentials)   
+[Compatibility](#compatibility)  
+[Usage](#usage) 
+[Resources](#resources)  
 
-* [git](https://git-scm.com/downloads)
-* Node.js and pnpm. Minimum version Node 18. You can find instructions on how to install both using nvm (Node Version Manager) for Linux, Mac, and WSL [here](https://github.com/nvm-sh/nvm). For Windows users, refer to Microsoft's guide to [Install NodeJS on Windows](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows).
-* Install n8n with:
-  ```
-  pnpm install n8n -g
-  ```
-* Recommended: follow n8n's guide to [set up your development environment](https://docs.n8n.io/integrations/creating-nodes/build/node-development-environment/).
+## Installation
 
-## Using this starter
+Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation.
 
-These are the basic steps for working with the starter. For detailed guidance on creating and publishing nodes, refer to the [documentation](https://docs.n8n.io/integrations/creating-nodes/).
+## Operations
 
-1. [Generate a new repository](https://github.com/n8n-io/n8n-nodes-starter/generate) from this template repository.
-2. Clone your new repo:
-   ```
-   git clone https://github.com/<your organization>/<your-repo-name>.git
-   ```
-3. Run `pnpm i` to install dependencies.
-4. Open the project in your editor.
-5. Browse the examples in `/nodes` and `/credentials`. Modify the examples, or replace them with your own nodes.
-6. Update the `package.json` to match your details.
-7. Run `pnpm lint` to check for errors or `pnpm lintfix` to automatically fix errors when possible.
-8. Test your node locally. Refer to [Run your node locally](https://docs.n8n.io/integrations/creating-nodes/test/run-node-locally/) for guidance.
-9. Replace this README with documentation for your node. Use the [README_TEMPLATE](README_TEMPLATE.md) to get started.
-10. Update the LICENSE file to use your details.
-11. [Publish](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry) your package to npm.
+### Scrape
 
-## More information
+Firecrawl converts web pages into markdown, ideal for LLM applications.
 
-Refer to our [documentation on creating nodes](https://docs.n8n.io/integrations/creating-nodes/) for detailed information on building your own nodes.
+- It manages complexities: proxies, caching, rate limits, js-blocked content
+- Handles dynamic content: dynamic websites, js-rendered sites, PDFs, images
+- Outputs clean markdown, structured data, screenshots or html.
 
-## License
+### Crawl
 
-[MIT](https://github.com/n8n-io/n8n-nodes-starter/blob/master/LICENSE.md)
+Firecrawl can recursively search through a urls subdomains, and gather the content
+
+- Firecrawl thoroughly crawls websites, ensuring comprehensive data extraction while bypassing any web blocker mechanisms. Here’s how it works:
+
+- URL Analysis: Begins with a specified URL, identifying links by looking at the sitemap and then crawling the website. If no sitemap is found, it will crawl the website following the links.
+
+- Recursive Traversal: Recursively follows each link to uncover all subpages.
+
+- Content Scraping: Gathers content from every visited page while handling any complexities like JavaScript rendering or rate limits.
+
+- Result Compilation: Converts collected data into clean markdown or structured output, perfect for LLM processing or any other task.
+
+This method guarantees an exhaustive crawl and data collection from any starting URL.
+
+### Map
+
+The easiest way to go from a single url to a map of the entire website. This is extremely useful for:
+
+- When you need to prompt the end-user to choose which links to scrape
+- Need to quickly know the links on a website
+- Need to scrape pages of a website that are related to a specific topic (use the search parameter)
+- Only need to scrape specific pages of a website
+
+## Credentials
+
+**FireCrawl API**
+
+The FireCrawl API is the only authentication method available for this node. You can find your API key in the FireCrawl dashboard.
+
+
+## Compatibility
+
+This node has been tested with the following versions of N8N.
+
+- N8N 1.57.0
+
+## Usage
+
+- Install the Firecrawl node
+- Enter your Firecrawl API key
+- Choose the operation you want to perform
+
+## Resources
+
+* [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
+* [Firecrawl API documentation](https://docs.firecrawl.dev/)
+
+
+

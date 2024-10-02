@@ -17,7 +17,7 @@ export const name = 'Submit A Crawl Job'
 const rawOption: INodePropertyOptions = {
   name: 'Submit A Crawl Job',
   value: 'Submit A Crawl Job',
-  action: 'Submit A Crawl Job Default',
+  action: 'Submit A Crawl Job',
   description: 'Submits a job to crawl a URL and all accessible subpages',
   routing: {
     request: {

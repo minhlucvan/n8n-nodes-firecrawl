@@ -47,7 +47,7 @@ const extraProperties: INodeProperties[] = [
     name: 'customBody',
     type: 'json',
     default:
-      '{\n  "url": "string",\n  "limit": 0,\n  "allowBackwardLinks": true,\n  "webhook": "string"\n}',
+      '{\n  "url": "string",\n  "limit": 0,\n  "excludePaths": [\n    "string"\n  ],\n  "allowBackwardLinks": true,\n  "webhook": "string",\n  "scrapeOptions": {\n    "formats": [\n      "markdown"\n    ],\n    "extract": {\n      "schema": "string",\n      "systemPrompt": "string",\n      "prompt": "string"\n    }\n  }\n}',
     description: 'Custom body to send',
     routing: {
       request: {
@@ -72,7 +72,7 @@ const extraProperties: INodeProperties[] = [
     name: 'customBody',
     type: 'json',
     default:
-      '{\n  "url": "string",\n  "excludePaths": [\n    "string"\n  ],\n  "limit": 0\n}',
+      '{\n  "url": "string",\n  "excludePaths": [\n    "string"\n  ],\n  "limit": 0,\n  "scrapeOptions": {\n    "formats": [\n      "markdown"\n    ],\n    "extract": {\n      "schema": "string",\n      "systemPrompt": "string",\n      "prompt": "string"\n    }\n  }\n}',
     description: 'Custom body to send',
     routing: {
       request: {
@@ -96,7 +96,8 @@ const extraProperties: INodeProperties[] = [
     displayName: 'Custom Body',
     name: 'customBody',
     type: 'json',
-    default: '{\n  "url": "string",\n  "limit": 0,\n  "webhook": "string"\n}',
+    default:
+      '{\n  "url": "string",\n  "limit": 0,\n  "webhook": "string",\n  "excludePaths": [\n    "string"\n  ],\n  "scrapeOptions": {\n    "formats": [\n      "markdown"\n    ],\n    "extract": {\n      "schema": "string",\n      "systemPrompt": "string",\n      "prompt": "string"\n    }\n  }\n}',
     description: 'Custom body to send',
     routing: {
       request: {

@@ -17,7 +17,7 @@ export const name = 'Scrape A Url And Get Its Content'
 const rawOption: INodePropertyOptions = {
   name: 'Scrape A Url And Get Its Content',
   value: 'Scrape A Url And Get Its Content',
-  action: 'Scrape A Url And Get Its Content Default',
+  action: 'Scrape A Url And Get Its Content',
   description:
     'Scrape a given URL to retrieve content in markdown, HTML, or other formats. This endpoint supports structured data extraction and dynamic actions.',
   routing: {

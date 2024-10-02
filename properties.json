@@ -29,8 +29,13 @@
       {
         "name": "Submit A Crawl Job",
         "value": "Submit A Crawl Job",
+<<<<<<< HEAD
         "action": "Submit A Crawl Job Default",
         "description": "Submits a job to crawl a URL and all accessible subpages",
+=======
+        "action": "Submit a crawl job",
+        "description": "Submits a job to crawl a URL and all accessible subpages.",
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
         "routing": {
           "request": {
             "method": "POST",
@@ -41,8 +46,13 @@
       {
         "name": "Check Crawl Job Status",
         "value": "Check Crawl Job Status",
+<<<<<<< HEAD
         "action": "Check Crawl Job Status Default",
         "description": "Check the status of a crawl job by its ID and retrieve the result",
+=======
+        "action": "Check Crawl Job Status",
+        "description": "Check the status of a crawl job by its ID and retrieve the result.",
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
         "routing": {
           "request": {
             "method": "GET",
@@ -53,12 +63,18 @@
       {
         "name": "Crawl Url With Websocket Monitoring",
         "value": "Crawl Url With Websocket Monitoring",
+<<<<<<< HEAD
         "action": "Crawl Url With Websocket Monitoring Default",
         "description": "Initiate a crawl and monitor progress in real-time using WebSocket",
+=======
+        "action": "Crawl URL with WebSocket Monitoring",
+        "description": "Initiate a crawl and monitor progress in real-time using WebSocket.",
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
         "routing": {
           "request": {
             "method": "POST",
             "url": "=/crawl/websocket"
+<<<<<<< HEAD
           },
           "output": {
             "postReceive": [
@@ -69,14 +85,21 @@
                 }
               }
             ]
+=======
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           }
         }
       },
       {
         "name": "Submit A Crawl Job With A Webhook",
         "value": "Submit A Crawl Job With A Webhook",
+<<<<<<< HEAD
         "action": "Submit A Crawl Job With A Webhook Default",
         "description": "Submits a job to crawl a URL and sends webhook events during the crawl process",
+=======
+        "action": "Submit a crawl job with a webhook",
+        "description": "Submits a job to crawl a URL and sends webhook events during the crawl process.",
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
         "routing": {
           "request": {
             "method": "POST",
@@ -87,8 +110,13 @@
       {
         "name": "Scrape A Url And Get Its Content",
         "value": "Scrape A Url And Get Its Content",
+<<<<<<< HEAD
         "action": "Scrape A Url And Get Its Content Default",
         "description": "Scrape a given URL to retrieve content in markdown, HTML, or other formats. This endpoint supports structured data extraction and dynamic actions.",
+=======
+        "action": "Scrape a URL and get its content.",
+        "description": "Scrape a given URL to retrieve content in markdown, HTML, or other formats. This endpoint supports structured data extraction and dynamic actions.\n",
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
         "routing": {
           "request": {
             "method": "POST",
@@ -99,8 +127,13 @@
       {
         "name": "Map A Website And Get Urls",
         "value": "Map A Website And Get Urls",
+<<<<<<< HEAD
         "action": "Map A Website And Get Urls Default",
         "description": "Map a URL and retrieve most links present on the website. Optionally, use the `search` parameter to filter URLs by a specific keyword",
+=======
+        "action": "Map a website and get URLs",
+        "description": "Map a URL and retrieve most links present on the website. Optionally, use the `search` parameter to filter URLs by a specific keyword.",
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
         "routing": {
           "request": {
             "method": "POST",
@@ -136,7 +169,11 @@
     "name": "url",
     "type": "string",
     "default": "",
+<<<<<<< HEAD
     "description": "The URL to crawl",
+=======
+    "description": "The URL to crawl.",
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
     "routing": {
       "request": {
         "body": {
@@ -146,7 +183,11 @@
     },
     "displayOptions": {
       "hide": {
+<<<<<<< HEAD
         "useCustomBody": [
+=======
+        "/options.useCustomBody": [
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           true
         ]
       },
@@ -165,7 +206,11 @@
     "name": "limit",
     "type": "number",
     "default": 0,
+<<<<<<< HEAD
     "description": "Limit the number of pages to crawl",
+=======
+    "description": "Limit the number of pages to crawl.",
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
     "routing": {
       "request": {
         "body": {
@@ -175,7 +220,58 @@
     },
     "displayOptions": {
       "hide": {
+<<<<<<< HEAD
         "useCustomBody": [
+=======
+        "/options.useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Submit A Crawl Job"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Exclude Paths",
+    "name": "excludePaths",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "List of paths to exclude from the crawl.",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "name": "Item",
+            "displayName": "Item",
+            "type": "string",
+            "default": ""
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "excludePaths": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           true
         ]
       },
@@ -194,7 +290,11 @@
     "name": "allowBackwardLinks",
     "type": "boolean",
     "default": true,
+<<<<<<< HEAD
     "description": "Allow crawling pages that are not direct descendants of the initial URL",
+=======
+    "description": "Allow crawling pages that are not direct descendants of the initial URL.",
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
     "routing": {
       "request": {
         "body": {
@@ -204,7 +304,11 @@
     },
     "displayOptions": {
       "hide": {
+<<<<<<< HEAD
         "useCustomBody": [
+=======
+        "/options.useCustomBody": [
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           true
         ]
       },
@@ -223,7 +327,11 @@
     "name": "webhook",
     "type": "string",
     "default": "",
+<<<<<<< HEAD
     "description": "URL to send webhook events during the crawl process",
+=======
+    "description": "URL to send webhook events during the crawl process.",
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
     "routing": {
       "request": {
         "body": {
@@ -233,7 +341,117 @@
     },
     "displayOptions": {
       "hide": {
+<<<<<<< HEAD
         "useCustomBody": [
+=======
+        "/options.useCustomBody": [
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Submit A Crawl Job"
+        ]
+      }
+    }
+  },
+  {
+<<<<<<< HEAD
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"url\": \"string\",\n  \"limit\": 0,\n  \"allowBackwardLinks\": true,\n  \"webhook\": \"string\"\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+=======
+    "displayName": "Scrape Options",
+    "name": "scrapeOptions",
+    "type": "fixedCollection",
+    "default": {},
+    "description": "Scraping options",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "multiOptions",
+            "default": [],
+            "description": "Output format(s) for the scraped data.",
+            "options": [
+              {
+                "name": "markdown",
+                "value": "markdown"
+              },
+              {
+                "name": "html",
+                "value": "html"
+              },
+              {
+                "name": "extract",
+                "value": "extract"
+              }
+            ],
+            "name": "formats",
+            "displayName": "formats"
+          },
+          {
+            "type": "fixedCollection",
+            "default": {},
+            "options": [
+              {
+                "name": "items",
+                "displayName": "Items",
+                "values": [
+                  {
+                    "type": "string",
+                    "default": "",
+                    "description": "The schema for structured data extraction.",
+                    "name": "schema",
+                    "displayName": "schema"
+                  },
+                  {
+                    "type": "string",
+                    "default": "",
+                    "description": "The system prompt used for extraction.",
+                    "name": "systemPrompt",
+                    "displayName": "systemPrompt"
+                  },
+                  {
+                    "type": "string",
+                    "default": "",
+                    "description": "Extraction prompt without schema.",
+                    "name": "prompt",
+                    "displayName": "prompt"
+                  }
+                ]
+              }
+            ],
+            "name": "extract",
+            "displayName": "extract"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "scrapeOptions": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
           true
         ]
       },
@@ -251,14 +469,10 @@
     "displayName": "Custom Body",
     "name": "customBody",
     "type": "json",
-    "default": "{\n  \"url\": \"string\",\n  \"limit\": 0,\n  \"allowBackwardLinks\": true,\n  \"webhook\": \"string\"\n}",
-    "description": "Custom body to send",
+    "default": "{\n  \"url\": \"string\",\n  \"limit\": 0,\n  \"excludePaths\": [\n    \"string\"\n  ],\n  \"allowBackwardLinks\": true,\n  \"webhook\": \"string\",\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"extract\": {\n      \"schema\": \"string\",\n      \"systemPrompt\": \"string\",\n      \"prompt\": \"string\"\n    }\n  }\n}",
+    "description": "Custom body to send.",
     "routing": {
-      "request": {
-        "body": {
-          "customBody": "={{JSON.parse($value)}}"
-        }
-      },
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
       "send": {
         "preSend": [
           "${helpers.hooks.preSendActionCustonBody}"
@@ -267,7 +481,11 @@
     },
     "displayOptions": {
       "show": {
+<<<<<<< HEAD
         "useCustomBody": [
+=======
+        "/options.useCustomBody": [
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           true
         ],
         "resource": [
@@ -340,7 +558,11 @@
     "name": "url",
     "type": "string",
     "default": "",
+<<<<<<< HEAD
     "description": "The URL to crawl",
+=======
+    "description": "The URL to crawl.",
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
     "routing": {
       "request": {
         "body": {
@@ -350,7 +572,11 @@
     },
     "displayOptions": {
       "hide": {
+<<<<<<< HEAD
         "useCustomBody": [
+=======
+        "/options.useCustomBody": [
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           true
         ]
       },
@@ -372,7 +598,11 @@
     "typeOptions": {
       "multipleValues": true
     },
+<<<<<<< HEAD
     "description": "List of paths to exclude from the crawl",
+=======
+    "description": "List of paths to exclude from the crawl.",
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
     "placeholder": "Add item",
     "options": [
       {
@@ -397,7 +627,11 @@
     },
     "displayOptions": {
       "hide": {
+<<<<<<< HEAD
         "useCustomBody": [
+=======
+        "/options.useCustomBody": [
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           true
         ]
       },
@@ -416,7 +650,11 @@
     "name": "limit",
     "type": "number",
     "default": 0,
+<<<<<<< HEAD
     "description": "Limit the number of pages to crawl",
+=======
+    "description": "Limit the number of pages to crawl.",
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
     "routing": {
       "request": {
         "body": {
@@ -426,7 +664,117 @@
     },
     "displayOptions": {
       "hide": {
+<<<<<<< HEAD
         "useCustomBody": [
+=======
+        "/options.useCustomBody": [
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Crawl Url With Websocket Monitoring"
+        ]
+      }
+    }
+  },
+  {
+<<<<<<< HEAD
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"url\": \"string\",\n  \"excludePaths\": [\n    \"string\"\n  ],\n  \"limit\": 0\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+=======
+    "displayName": "Scrape Options",
+    "name": "scrapeOptions",
+    "type": "fixedCollection",
+    "default": {},
+    "description": "Scraping options",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "multiOptions",
+            "default": [],
+            "description": "Output format(s) for the scraped data.",
+            "options": [
+              {
+                "name": "markdown",
+                "value": "markdown"
+              },
+              {
+                "name": "html",
+                "value": "html"
+              },
+              {
+                "name": "extract",
+                "value": "extract"
+              }
+            ],
+            "name": "formats",
+            "displayName": "formats"
+          },
+          {
+            "type": "fixedCollection",
+            "default": {},
+            "options": [
+              {
+                "name": "items",
+                "displayName": "Items",
+                "values": [
+                  {
+                    "type": "string",
+                    "default": "",
+                    "description": "The schema for structured data extraction.",
+                    "name": "schema",
+                    "displayName": "schema"
+                  },
+                  {
+                    "type": "string",
+                    "default": "",
+                    "description": "The system prompt used for extraction.",
+                    "name": "systemPrompt",
+                    "displayName": "systemPrompt"
+                  },
+                  {
+                    "type": "string",
+                    "default": "",
+                    "description": "Extraction prompt without schema.",
+                    "name": "prompt",
+                    "displayName": "prompt"
+                  }
+                ]
+              }
+            ],
+            "name": "extract",
+            "displayName": "extract"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "scrapeOptions": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
           true
         ]
       },
@@ -444,14 +792,10 @@
     "displayName": "Custom Body",
     "name": "customBody",
     "type": "json",
-    "default": "{\n  \"url\": \"string\",\n  \"excludePaths\": [\n    \"string\"\n  ],\n  \"limit\": 0\n}",
-    "description": "Custom body to send",
+    "default": "{\n  \"url\": \"string\",\n  \"excludePaths\": [\n    \"string\"\n  ],\n  \"limit\": 0,\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"extract\": {\n      \"schema\": \"string\",\n      \"systemPrompt\": \"string\",\n      \"prompt\": \"string\"\n    }\n  }\n}",
+    "description": "Custom body to send.",
     "routing": {
-      "request": {
-        "body": {
-          "customBody": "={{JSON.parse($value)}}"
-        }
-      },
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
       "send": {
         "preSend": [
           "${helpers.hooks.preSendActionCustonBody}"
@@ -460,7 +804,11 @@
     },
     "displayOptions": {
       "show": {
+<<<<<<< HEAD
         "useCustomBody": [
+=======
+        "/options.useCustomBody": [
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           true
         ],
         "resource": [
@@ -497,7 +845,11 @@
     "name": "url",
     "type": "string",
     "default": "",
+<<<<<<< HEAD
     "description": "The URL to crawl",
+=======
+    "description": "The URL to crawl.",
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
     "routing": {
       "request": {
         "body": {
@@ -507,7 +859,11 @@
     },
     "displayOptions": {
       "hide": {
+<<<<<<< HEAD
         "useCustomBody": [
+=======
+        "/options.useCustomBody": [
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           true
         ]
       },
@@ -526,7 +882,11 @@
     "name": "limit",
     "type": "number",
     "default": 0,
+<<<<<<< HEAD
     "description": "Limit the number of pages to crawl",
+=======
+    "description": "Limit the number of pages to crawl.",
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
     "routing": {
       "request": {
         "body": {
@@ -536,7 +896,11 @@
     },
     "displayOptions": {
       "hide": {
+<<<<<<< HEAD
         "useCustomBody": [
+=======
+        "/options.useCustomBody": [
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           true
         ]
       },
@@ -555,7 +919,11 @@
     "name": "webhook",
     "type": "string",
     "default": "",
+<<<<<<< HEAD
     "description": "URL to send webhook events to",
+=======
+    "description": "URL to send webhook events to.",
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
     "routing": {
       "request": {
         "body": {
@@ -565,7 +933,164 @@
     },
     "displayOptions": {
       "hide": {
+<<<<<<< HEAD
         "useCustomBody": [
+=======
+        "/options.useCustomBody": [
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Submit A Crawl Job With A Webhook"
+        ]
+      }
+    }
+  },
+  {
+<<<<<<< HEAD
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"url\": \"string\",\n  \"limit\": 0,\n  \"webhook\": \"string\"\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+=======
+    "displayName": "Exclude Paths",
+    "name": "excludePaths",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "List of paths to exclude from the crawl.",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "name": "Item",
+            "displayName": "Item",
+            "type": "string",
+            "default": ""
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "excludePaths": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Submit A Crawl Job With A Webhook"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Scrape Options",
+    "name": "scrapeOptions",
+    "type": "fixedCollection",
+    "default": {},
+    "description": "Scraping options",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "multiOptions",
+            "default": [],
+            "description": "Output format(s) for the scraped data.",
+            "options": [
+              {
+                "name": "markdown",
+                "value": "markdown"
+              },
+              {
+                "name": "html",
+                "value": "html"
+              },
+              {
+                "name": "extract",
+                "value": "extract"
+              }
+            ],
+            "name": "formats",
+            "displayName": "formats"
+          },
+          {
+            "type": "fixedCollection",
+            "default": {},
+            "options": [
+              {
+                "name": "items",
+                "displayName": "Items",
+                "values": [
+                  {
+                    "type": "string",
+                    "default": "",
+                    "description": "The schema for structured data extraction.",
+                    "name": "schema",
+                    "displayName": "schema"
+                  },
+                  {
+                    "type": "string",
+                    "default": "",
+                    "description": "The system prompt used for extraction.",
+                    "name": "systemPrompt",
+                    "displayName": "systemPrompt"
+                  },
+                  {
+                    "type": "string",
+                    "default": "",
+                    "description": "Extraction prompt without schema.",
+                    "name": "prompt",
+                    "displayName": "prompt"
+                  }
+                ]
+              }
+            ],
+            "name": "extract",
+            "displayName": "extract"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "scrapeOptions": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
           true
         ]
       },
@@ -583,14 +1108,10 @@
     "displayName": "Custom Body",
     "name": "customBody",
     "type": "json",
-    "default": "{\n  \"url\": \"string\",\n  \"limit\": 0,\n  \"webhook\": \"string\"\n}",
-    "description": "Custom body to send",
+    "default": "{\n  \"url\": \"string\",\n  \"limit\": 0,\n  \"webhook\": \"string\",\n  \"excludePaths\": [\n    \"string\"\n  ],\n  \"scrapeOptions\": {\n    \"formats\": [\n      \"markdown\"\n    ],\n    \"extract\": {\n      \"schema\": \"string\",\n      \"systemPrompt\": \"string\",\n      \"prompt\": \"string\"\n    }\n  }\n}",
+    "description": "Custom body to send.",
     "routing": {
-      "request": {
-        "body": {
-          "customBody": "={{JSON.parse($value)}}"
-        }
-      },
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
       "send": {
         "preSend": [
           "${helpers.hooks.preSendActionCustonBody}"
@@ -599,7 +1120,11 @@
     },
     "displayOptions": {
       "show": {
+<<<<<<< HEAD
         "useCustomBody": [
+=======
+        "/options.useCustomBody": [
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           true
         ],
         "resource": [
@@ -635,7 +1160,11 @@
     "name": "url",
     "type": "string",
     "default": "",
+<<<<<<< HEAD
     "description": "The URL to scrape",
+=======
+    "description": "The URL to scrape.",
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
     "routing": {
       "request": {
         "body": {
@@ -645,7 +1174,11 @@
     },
     "displayOptions": {
       "hide": {
+<<<<<<< HEAD
         "useCustomBody": [
+=======
+        "/options.useCustomBody": [
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           true
         ]
       },
@@ -688,7 +1221,11 @@
     },
     "displayOptions": {
       "hide": {
+<<<<<<< HEAD
         "useCustomBody": [
+=======
+        "/options.useCustomBody": [
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           true
         ]
       },
@@ -715,23 +1252,41 @@
           {
             "type": "string",
             "default": "",
+<<<<<<< HEAD
             "description": "The schema for structured data extraction",
             "name": "schema",
             "displayName": "Schema"
+=======
+            "description": "The schema for structured data extraction.",
+            "name": "schema",
+            "displayName": "schema"
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           },
           {
             "type": "string",
             "default": "",
+<<<<<<< HEAD
             "description": "The system prompt used for extraction",
             "name": "systemPrompt",
             "displayName": "Systemprompt"
+=======
+            "description": "The system prompt used for extraction.",
+            "name": "systemPrompt",
+            "displayName": "systemPrompt"
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           },
           {
             "type": "string",
             "default": "",
+<<<<<<< HEAD
             "description": "Extraction prompt without schema",
             "name": "prompt",
             "displayName": "Prompt"
+=======
+            "description": "Extraction prompt without schema.",
+            "name": "prompt",
+            "displayName": "prompt"
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           }
         ]
       }
@@ -745,7 +1300,11 @@
     },
     "displayOptions": {
       "hide": {
+<<<<<<< HEAD
         "useCustomBody": [
+=======
+        "/options.useCustomBody": [
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           true
         ]
       },
@@ -755,6 +1314,12 @@
         ],
         "operation": [
           "Scrape A Url And Get Its Content"
+<<<<<<< HEAD
+=======
+        ],
+        "formats": [
+          "extract"
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
         ]
       }
     }
@@ -767,7 +1332,11 @@
     "typeOptions": {
       "multipleValues": true
     },
+<<<<<<< HEAD
     "description": "List of actions to interact with dynamic content before scraping",
+=======
+    "description": "List of actions to interact with dynamic content before scraping.",
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
     "placeholder": "Add item",
     "options": [
       {
@@ -777,7 +1346,10 @@
           {
             "type": "options",
             "default": "wait",
+<<<<<<< HEAD
             "description": "",
+=======
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
             "options": [
               {
                 "name": "wait",
@@ -801,35 +1373,63 @@
               }
             ],
             "name": "type",
+<<<<<<< HEAD
             "displayName": "Type"
+=======
+            "displayName": "type"
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           },
           {
             "type": "string",
             "default": "",
+<<<<<<< HEAD
             "description": "The CSS selector for `click` and `write` actions",
             "name": "selector",
             "displayName": "Selector"
+=======
+            "description": "The CSS selector for `click` and `write` actions.",
+            "name": "selector",
+            "displayName": "selector"
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           },
           {
             "type": "number",
             "default": 0,
+<<<<<<< HEAD
             "description": "Milliseconds to wait for `wait` action",
             "name": "milliseconds",
             "displayName": "Milliseconds"
+=======
+            "description": "Milliseconds to wait for `wait` action.",
+            "name": "milliseconds",
+            "displayName": "milliseconds"
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           },
           {
             "type": "string",
             "default": "",
+<<<<<<< HEAD
             "description": "Text for `write` action",
             "name": "text",
             "displayName": "Text"
+=======
+            "description": "Text for `write` action.",
+            "name": "text",
+            "displayName": "text"
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           },
           {
             "type": "string",
             "default": "",
+<<<<<<< HEAD
             "description": "Key for `press` action",
             "name": "key",
             "displayName": "Key"
+=======
+            "description": "Key for `press` action.",
+            "name": "key",
+            "displayName": "key"
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           }
         ]
       }
@@ -843,7 +1443,11 @@
     },
     "displayOptions": {
       "hide": {
+<<<<<<< HEAD
         "useCustomBody": [
+=======
+        "/options.useCustomBody": [
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           true
         ]
       },
@@ -862,6 +1466,7 @@
     "name": "customBody",
     "type": "json",
     "default": "{\n  \"url\": \"string\",\n  \"formats\": [\n    \"markdown\"\n  ],\n  \"extract\": {\n    \"schema\": \"string\",\n    \"systemPrompt\": \"string\",\n    \"prompt\": \"string\"\n  },\n  \"actions\": [\n    {\n      \"type\": \"wait\",\n      \"selector\": \"string\",\n      \"milliseconds\": 0,\n      \"text\": \"string\",\n      \"key\": \"string\"\n    }\n  ]\n}",
+<<<<<<< HEAD
     "description": "Custom body to send",
     "routing": {
       "request": {
@@ -869,6 +1474,10 @@
           "customBody": "={{JSON.parse($value)}}"
         }
       },
+=======
+    "description": "Custom body to send.",
+    "routing": {
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
       "send": {
         "preSend": [
           "${helpers.hooks.preSendActionCustonBody}"
@@ -877,7 +1486,11 @@
     },
     "displayOptions": {
       "show": {
+<<<<<<< HEAD
         "useCustomBody": [
+=======
+        "/options.useCustomBody": [
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           true
         ],
         "resource": [
@@ -913,7 +1526,11 @@
     "name": "url",
     "type": "string",
     "default": "https://firecrawl.dev",
+<<<<<<< HEAD
     "description": "The URL of the website to map",
+=======
+    "description": "The URL of the website to map.",
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
     "routing": {
       "request": {
         "body": {
@@ -923,7 +1540,11 @@
     },
     "displayOptions": {
       "hide": {
+<<<<<<< HEAD
         "useCustomBody": [
+=======
+        "/options.useCustomBody": [
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           true
         ]
       },
@@ -942,7 +1563,11 @@
     "name": "search",
     "type": "string",
     "default": "docs",
+<<<<<<< HEAD
     "description": "Search term to filter specific URLs",
+=======
+    "description": "Search term to filter specific URLs.",
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
     "routing": {
       "request": {
         "body": {
@@ -952,7 +1577,11 @@
     },
     "displayOptions": {
       "hide": {
+<<<<<<< HEAD
         "useCustomBody": [
+=======
+        "/options.useCustomBody": [
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           true
         ]
       },
@@ -971,6 +1600,7 @@
     "name": "customBody",
     "type": "json",
     "default": "{\n  \"url\": \"https://firecrawl.dev\",\n  \"search\": \"docs\"\n}",
+<<<<<<< HEAD
     "description": "Custom body to send",
     "routing": {
       "request": {
@@ -978,6 +1608,10 @@
           "customBody": "={{JSON.parse($value)}}"
         }
       },
+=======
+    "description": "Custom body to send.",
+    "routing": {
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
       "send": {
         "preSend": [
           "${helpers.hooks.preSendActionCustonBody}"
@@ -986,7 +1620,11 @@
     },
     "displayOptions": {
       "show": {
+<<<<<<< HEAD
         "useCustomBody": [
+=======
+        "/options.useCustomBody": [
+>>>>>>> eca7dd0fee40d0d0d0301a3d90a0dc3565987b95
           true
         ],
         "resource": [

@@ -17,7 +17,7 @@ export const name = 'Submit A Crawl Job With A Webhook'
 const rawOption: INodePropertyOptions = {
   name: 'Submit A Crawl Job With A Webhook',
   value: 'Submit A Crawl Job With A Webhook',
-  action: 'Submit A Crawl Job With A Webhook Default',
+  action: 'Submit A Crawl Job With A Webhook',
   description:
     'Submits a job to crawl a URL and sends webhook events during the crawl process',
   routing: {

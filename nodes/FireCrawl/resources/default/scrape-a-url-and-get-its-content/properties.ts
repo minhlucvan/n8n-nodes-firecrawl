@@ -134,6 +134,7 @@ export const properties: INodeProperties[] = [
       show: {
         resource: ['Default'],
         operation: ['Scrape A Url And Get Its Content'],
+        formats: ['extract'],
       },
     },
   },

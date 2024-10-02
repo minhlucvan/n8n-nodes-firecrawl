@@ -8,7 +8,7 @@ module.exports = {
       name: 'fireCrawlApi',
       className: 'FireCrawlApi',
       scheme: 'apiKey',
-    }
+    },
   },
   nodes: {
     firecrawl: {
@@ -16,21 +16,57 @@ module.exports = {
       name: 'FireCrawl',
       description: 'FireCrawl API',
       openapi: path.resolve(__dirname, 'openapi.yml'),
-      icon: './icons/firewrawl.png',
-      baseUrl: '=\{\{$credentials.baseUrl\}\}',
-      credentials: [{
-        displayName: 'FireCrawl API',
-        name: 'fireCrawlApi',
-        required: true,
-      }],
+      icon: './icons/firecrawl.svg',
+      baseUrl: '={{$credentials.baseUrl}}',
+      credentials: [
+        {
+          displayName: 'FireCrawl API',
+          name: 'fireCrawlApi',
+          required: true,
+        },
+      ],
     },
   },
   overwrites: {
-    operations: [],
+    operations: [
+      {
+        match: {
+          name: 'extract',
+          displayOptions: {
+            show: {
+              resource: ['Default'],
+              operation: ['Scrape A Url And Get Its Content'],
+            },
+          },
+        },
+        set: {
+          displayOptions: {
+            show: {
+              resource: ['Default'],
+              operation: ['Scrape A Url And Get Its Content'],
+              // display only when formats include 'extract'
+              formats: ['extract'],
+            },
+          },
+        },
+      },
+      {
+        match: {
+          type: 'boolean',
+        },
+        set: function (operation) {
+          if (!operation.description || !operation.description.startsWith('Whether`')) {
+            return operation;
+          }
+          operation.description = `Whether to ${operation.description}`;
+
+          return operation;
+        }
+      }
+    ],
   },
   normalizeActionFn: (_, opName) => {
     // /a /b => /b
     return opName;
   }
 };
-

@@ -23,12 +23,42 @@ paths:
                 limit:
                   type: integer
                   description: Limit the number of pages to crawl.
+                excludePaths:
+                  type: array
+                  items:
+                    type: string
+                  description: List of paths to exclude from the crawl.
                 allowBackwardLinks:
                   type: boolean
                   description: Allow crawling pages that are not direct descendants of the initial URL.
                 webhook:
                   type: string
                   description: URL to send webhook events during the crawl process.
+                scrapeOptions:
+                  type: object
+                  description: Scraping options
+                  properties:
+                    formats:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                          - markdown
+                          - html
+                          - extract
+                      description: Output format(s) for the scraped data.
+                    extract:
+                      type: object
+                      properties:
+                        schema:
+                          type: string
+                          description: The schema for structured data extraction.
+                        systemPrompt:
+                          type: string
+                          description: The system prompt used for extraction.
+                        prompt:
+                          type: string
+                          description: Extraction prompt without schema.
               required:
                 - url
       responses:
@@ -144,6 +174,31 @@ paths:
                 limit:
                   type: integer
                   description: Limit the number of pages to crawl.
+                scrapeOptions:
+                  type: object
+                  description: Scraping options
+                  properties:
+                    formats:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                          - markdown
+                          - html
+                          - extract
+                      description: Output format(s) for the scraped data.
+                    extract:
+                      type: object
+                      properties:
+                        schema:
+                          type: string
+                          description: The schema for structured data extraction.
+                        systemPrompt:
+                          type: string
+                          description: The system prompt used for extraction.
+                        prompt:
+                          type: string
+                          description: Extraction prompt without schema.
       responses:
         '200':
           description: WebSocket connection initiated successfully.
@@ -170,6 +225,37 @@ paths:
                 webhook:
                   type: string
                   description: URL to send webhook events to.
+                excludePaths:
+                  type: array
+                  items:
+                    type: string
+                  description: List of paths to exclude from the crawl.
+                scrapeOptions:
+                  type: object
+                  description: Scraping options
+                  properties:
+                    formats:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                          - markdown
+                          - html
+                          - extract
+                      description: Output format(s) for the scraped data.
+                    extract:
+                      type: object
+                      properties:
+                        schema:
+                          type: string
+                          description: The schema for structured data extraction.
+                        systemPrompt:
+                          type: string
+                          description: The system prompt used for extraction.
+                        prompt:
+                          type: string
+                          description: Extraction prompt without schema.
+
               required:
                 - url
       responses:

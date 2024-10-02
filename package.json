@@ -1,19 +1,21 @@
 {
   "name": "n8n-nodes-firecrawl",
   "version": "0.2.0",
-  "description": "",
+  "description": "FireCrawl nodes for n8n",
   "keywords": [
-    "n8n-community-node-package"
+    "n8n-community-node-package",
+    "firecrawl",
+    "n8n"
   ],
   "license": "MIT",
   "homepage": "",
   "author": {
-    "name": "",
-    "email": ""
+    "name": "@minhlucvan",
+    "email": "luk.mink@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/<...>/n8n-nodes-<...>.git"
+    "url": "https://github.com/minhlucvan/n8n-nodes-firecrawl.git"
   },
   "engines": {
     "node": ">=18.10",
@@ -29,7 +31,7 @@
     "lint": "eslint nodes credentials package.json",
     "lintfix": "eslint nodes credentials package.json --fix",
     "prepublishOnly": "pnpm build && pnpm lint -c .eslintrc.prepublish.js nodes credentials package.json",
-    "merge:api": "npx openapi-merge-cli -config ./openapi.config.json",
+    "merge:api": "npx openapi-merge-cli --config ./openapi.config.json",
     "p2o": "p2o ./collection.json -f ./openapi.yml",
     "codegen": "create-n8n-nodes generate -o . -c nodes.config.js -a ./openapi.yml -t ../../templates/n8n-nodes"
   },
